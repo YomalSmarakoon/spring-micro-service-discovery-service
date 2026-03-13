@@ -1,0 +1,24 @@
+#spring:
+#  application:
+#    name: eureka-server
+#  config:
+#    import: "configserver:"   # 👈 NEW way to import Config Server properties
+#  cloud:
+#    config:
+#      uri: http://localhost:8071   # Your Config Server URL
+#    loadbalancer:
+#      ribbon:
+#        enabled: false
+
+spring:
+  application:
+    name: eureka-server
+  config:
+    import: "optional:configserver:"   # ✅ tell Spring to load config from Config Server
+  cloud:
+    config:
+      uri: http://localhost:8071       # ✅ your Config Server URL
+      fail-fast: true                  # (optional) make startup fail if config not reachable
+    loadbalancer:
+      ribbon:
+        enabled: false
